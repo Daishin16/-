@@ -1,15 +1,13 @@
 /*
+list size is 10
 2019/4/10 started
 
  */
+
 import java.util.ArrayList;
 
 public class Main {
     static ArrayList<Integer> list = new ArrayList<Integer>();
-
-    public static void main(String[] args) {
-        initialize();
-    }
 
     /*
     add 10 elements
@@ -25,5 +23,14 @@ public class Main {
         list.add(100);
         list.add(-56);
         list.add(7);
+    }
+
+    public static void main(String[] args) {
+        initialize();
+        int listSize = getListSize();
+    }
+
+    public static int getListSize() {
+        return list.size();
     }
 }
