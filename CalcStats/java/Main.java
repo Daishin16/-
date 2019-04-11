@@ -1,7 +1,8 @@
+
 /*
 list size is 10
 2019/4/10 started
-
+2019/4/11 finished
  */
 
 import java.util.ArrayList;
@@ -11,8 +12,8 @@ public class Main {
     static ArrayList<Integer> list = new ArrayList<Integer>();
 
     /*
-    add 10 elements
-    */
+     * add 10 elements
+     */
     public static void initialize() {
         list.add(1);
         list.add(3);
@@ -30,9 +31,13 @@ public class Main {
         initialize();
         int listSize = getListSize();
         Collections.addAll(list);
-        int ad = getAd();
+        double ad = getAd();
         int max = getMax();
         int min = getMin();
+        System.out.println("要素の数:" + listSize);
+        System.out.println("平均値:" + ad);
+        System.out.println("最大値:" + max);
+        System.out.println("最小値:" + min);
     }
 
     public static int getListSize() {
@@ -47,7 +52,11 @@ public class Main {
         return Collections.min(list);
     }
 
-    public static int getAd() {
-        return Collections.min(list);
+    public static double getAd() {
+        int addAll = 0;
+        for (int i = 0; i < getListSize(); i++) {
+            addAll += list.get(i);
+        }
+        return (double) addAll / getListSize();
     }
 }
