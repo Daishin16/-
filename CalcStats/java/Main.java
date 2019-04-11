@@ -5,6 +5,7 @@ list size is 10
  */
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Main {
     static ArrayList<Integer> list = new ArrayList<Integer>();
@@ -28,9 +29,25 @@ public class Main {
     public static void main(String[] args) {
         initialize();
         int listSize = getListSize();
+        Collections.addAll(list);
+        int ad = getAd();
+        int max = getMax();
+        int min = getMin();
     }
 
     public static int getListSize() {
         return list.size();
+    }
+
+    public static int getMax() {
+        return Collections.max(list);
+    }
+
+    public static int getMin() {
+        return Collections.min(list);
+    }
+
+    public static int getAd() {
+        return Collections.min(list);
     }
 }
