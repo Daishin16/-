@@ -30,8 +30,35 @@ fun main(args: Array<String>) {
     val rectangle = Rectangle(41, 43)
     println("isRectangle? => " + rectangle.isSquare)
 
+    println("getMnemonic => " + getMnemonic(Color.BLUE))
+
+//    println("RED&BLUE mixed => " + mix(Color.RED, Color.BLUE)) => Exception
+    println("RED&YELLOW mixed => " + mix(Color.RED, Color.YELLOW))
+    println("YELLOW&RED mixed => " + mix(Color.YELLOW, Color.RED))//順番は関係しない
+
 }
 
 fun max(a: Int, b: Int): Int {
     return if (a > b) a else b
+}
+
+enum class Color {
+    RED, ORANGE, YELLOW, GREEN, BLUE, INDIGO, VIOLET
+}
+
+fun getMnemonic(color: Color) = when (color) {
+    Color.RED -> "Richard"
+    Color.ORANGE -> "Of"
+    Color.YELLOW -> "York"
+    Color.GREEN -> "Gave"
+    Color.BLUE -> "Battle"
+    Color.INDIGO -> "In"
+    Color.VIOLET -> "Vain"
+}
+
+fun mix(c1: Color, c2: Color) = when (setOf(c1, c2)) {
+    setOf(Color.RED, Color.YELLOW) -> Color.ORANGE
+    setOf(Color.YELLOW, Color.BLUE) -> Color.GREEN
+    setOf(Color.BLUE, Color.VIOLET) -> Color.INDIGO
+    else -> throw Exception("Dirty color")
 }
