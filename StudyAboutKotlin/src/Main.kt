@@ -36,7 +36,7 @@ fun main() {
     println("RED&YELLOW mixed => " + mix(Color.RED, Color.YELLOW))
     println("YELLOW&RED mixed => " + mix(Color.YELLOW, Color.RED))//順番は関係しない
 
-    println("eval() result =>" + eval(Sum(Sum(Num(1),Num(2)),Num(4))))
+    println("eval() result =>" + eval(Sum(Sum(Num(1), Num(2)), Num(4))))
 
 }
 
@@ -69,6 +69,9 @@ interface Expr
 class Num(val value: Int) : Expr
 class Sum(val left: Expr, val right: Expr) : Expr
 
+/*
+many kinds of eval fun
+
 fun eval(e: Expr): Int {
     if (e is Num) {
         return e.value
@@ -78,3 +81,36 @@ fun eval(e: Expr): Int {
     }
     throw IllegalArgumentException("Unknown expression")
 }
+
+fun eval(e: Expr): Int =
+    if (e is Num){
+        e.value
+    }else if(e is Sum){
+        eval(e.right) + eval(e.left)
+    }else{
+        throw IllegalArgumentException("Unknown expression")
+    }
+*/
+
+fun eval(e: Expr): Int =
+    when (e) {
+        is Num ->
+            e.value
+        is Sum ->
+            eval(e.right) + eval(e.left)
+        else ->
+            throw IllegalArgumentException("Unknown expression")
+    }
+
+/*
+about while / do while
+
+    while (condition){
+        /*...*/
+    }
+    
+    do {
+       /*...*/ 
+    }while (condition)
+
+*/
