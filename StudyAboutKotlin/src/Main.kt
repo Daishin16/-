@@ -1,3 +1,7 @@
+import java.io.BufferedReader
+import java.io.StringReader
+import java.lang.NumberFormatException
+
 /*
 2019/06/07 started
 内容:Kotlinの基礎文法
@@ -25,7 +29,7 @@ fun main() {
 
     val person = Person("Bob", true)
     println("person.name => " + person.name)
-    println("peeson.isMarried => " + person.isMarried)
+    println("person.isMarried => " + person.isMarried)
 
     val rectangle = Rectangle(41, 43)
     println("isRectangle? => " + rectangle.isSquare)
@@ -44,6 +48,11 @@ fun main() {
     println("YELLOW&RED mixed => " + mix(Color.YELLOW, Color.RED))//順番は関係しない
 
     println("eval() result =>" + eval(Sum(Sum(Num(1), Num(2)), Num(4))))
+
+    var reader = BufferedReader(StringReader("239"))
+    println("readNumber() result => " + readNumber(reader))
+    reader = BufferedReader((StringReader("not a number")))
+    println("readNumber() result with not a type of Int => " + readNumber(reader))
 
 }
 
@@ -127,4 +136,15 @@ fun fizzBuzz(i: Int) = when {
     i % 3 == 0 -> "Fizz"
     i % 5 == 0 -> "Buzz"
     else -> "$i"
+}
+
+fun readNumber(reader: BufferedReader): Int? {
+    try {
+        val line = reader.readLine()
+        return Integer.parseInt(line)
+    } catch (e: NumberFormatException) {
+        return null
+    } finally {
+        reader.close()
+    }
 }
