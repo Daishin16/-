@@ -32,6 +32,13 @@ fun main() {
 
     println("getMnemonic => " + getMnemonic(Color.BLUE))
 
+    //fizzBuzz
+    print("fizzBuzz() result => ")
+    for (i in 1..30) {
+        print(fizzBuzz(i))
+    }
+    println()
+
 //    println("RED&BLUE mixed => " + mix(Color.RED, Color.BLUE)) => Exception
     println("RED&YELLOW mixed => " + mix(Color.RED, Color.YELLOW))
     println("YELLOW&RED mixed => " + mix(Color.YELLOW, Color.RED))//順番は関係しない
@@ -108,9 +115,16 @@ about while / do while
     while (condition){
         /*...*/
     }
-    
+
     do {
-       /*...*/ 
+        /*...*/
     }while (condition)
 
 */
+
+fun fizzBuzz(i: Int) = when {
+    i % 15 == 0 -> "FizzBuzz"
+    i % 3 == 0 -> "Fizz"
+    i % 5 == 0 -> "Buzz"
+    else -> "$i"
+}
